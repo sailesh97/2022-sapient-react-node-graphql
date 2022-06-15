@@ -61,8 +61,6 @@ mongodb, nodejs
 
 
 # Day 1 Contents 
-
-
 Disadvantages of using console API
 Overview of the Chrome Developer Tools
 Debugging JS using the Chrome Developer Tools
@@ -74,6 +72,17 @@ Synchronous (blocking) and Asynchronous (non-blocking) methods
 
 
 Block-level scoping and the use of let, const
+    - const  
+    - let 
+    - var 
+    - nothing 
+
+    ```
+        const myvar = "hello; 
+        let myvar = "hello; 
+        var myvar = "hello; 
+        myvar = "hello; -> window.myvar = "hello; 
+    ```
 Template strings
 Default Parameters
 Object and Array Destructuring	
@@ -87,4 +96,32 @@ async…await
 
 
 Kafka & how esb is used 
-aws azure docker 
+
+Cloud 
+    - aws azure 
+Containarization
+    - docker 
+
+
+
+- prefer not using log 
+- instead we can use debugger 
+    - browers (chrome)
+    - code 
+
+
+
+
+```
+
+function doSomething() {
+    console.log("One");
+    console.log("two");
+
+    fetch(
+            "http://yoursite.com/application/uri/resource",
+        (data) => {document.getElementById("mydiv").innerHTML = data})
+
+    console.log("Four");
+}
+```
