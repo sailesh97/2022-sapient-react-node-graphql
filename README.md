@@ -125,3 +125,41 @@ function doSomething() {
     console.log("Four");
 }
 ```
+
+
+- es6 content 
+
+```
+    function myfunction(val) {this.val = val}
+    // this is anonymous function + this cannot hold the referece of this 
+    let myfunction = (val) => {this.val this does not work (x)}
+```
+
+- a function inside a function is called closure 
+
+```
+    -- named closured 
+    function one() {
+        // variables which are declared here are accessable to two () + 
+        // since its a function its only loaded 
+        function two() {}
+
+        two(); 
+    }
+    let oneRef = one();
+
+
+    -- 
+
+
+    function one(val1) {
+        return function(val2) {
+            return val1 + val2; 
+        }
+    }
+```
+
+
+- callback 
+- promise 
+- error first approach 

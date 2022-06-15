@@ -8,9 +8,7 @@ function test() {
 }
 
 console.log(num1); 
-
 test();
-
 console.log(num1); 
 
 
