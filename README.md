@@ -85,3 +85,6 @@ Promises
 async…await
 
 
+
+Kafka & how esb is used 
+aws azure docker 
