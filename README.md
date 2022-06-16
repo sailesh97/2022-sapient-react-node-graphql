@@ -163,3 +163,110 @@ function doSomething() {
 - callback 
 - promise 
 - error first approach 
+
+
+
+# Day 2 
+
+- Generators 
+```
+    let arr = [32,5,6,8,9,02,1]; 
+
+    for(let i=0;i< arr.length; i++) {
+        console.log(i)
+    }
+
+    --- 
+    arr.forEach((val) => console.log(val)); 
+    -- fibonacci series 
+    let val = yeild currVal; 
+    [currVal, nextVal] = [nextVal, nextVal + currVal]; 
+```
+
+
+
+
+- Topics 
+
+- MongoDB basics
+- RDBMS vs NoSql DBs
+- Types of NoSQL DBs
+- Pros and Cons of RDBMS and NoSQL DBs
+- Document data model
+- When to use a document database
+- Introduction to MongoDB
+- Features of MongoDB
+- Installation and getting started
+- Using Compass and Robo 3T
+- Databases, collections, and documents
+- Schema design in MongoDB
+- Modelling relationships among collections
+- Basic queries
+- Introduction to the Mongo Shell
+- MongoDB’s query language
+- CRUD operations – Inserts, queries, updates, deletes
+- Query Criteria and Selectors
+- Query options
+- Introduction to document updates
+- Modify by replacement
+- Modify by operator
+
+
+
+
+
+export PATH=$PATH:$HOME/.local/bin:$PATH:YourMongoPath
+
+- SQL -> DBMS, RDBMS, Normalization, Keys ....  - 800 Different databases - A C I D 
+- NoSQL -> DB, un-Normalization, 
+
+```
+| Empid (pk) | empName | salary | designation| 
+| 101 |    Himanshu | 11000 | SE | 
+```
+
+```
+{
+    _id:12 byte information 
+    
+}
+```
+
+- by default 
+    - /data/db - linux, mac, 
+    - c:\data\db - win 
+- create a folder in desktop -> sapient-db 
+- 27017 
+
+> mongod --dbpath . 
+
+> mongod --dbpath . --port 27017
+
+> show dbs 
+
+> use sap_db;  (if the db is not created the it will create)
+
+> let emp={empName:'hitesh', empsal:1234}
+> db.emps.insert(emp); 
+
+
+ 
+> db.emps.insert({empName:'hitesh', empsal:1234}); 
+
+> db.emps.insert({empName:'Rohit', empsal:2233}); 
+
+> db.emps.insert({empName:'Madhulata', empsal:2233, email:"madhulatha@gmail.com"}); 
+
+> show collections; -- to show all the collections in the DB 
+
+
+> db.emps.find({});  - select * from emps; 
+
+>  db.emps.find({selector , projection - 1 or 0 });
+
+> db.emps.find({empName:'hitesh'})
+
+
+> db.emps.find({empsal:{$gt:2000}})
+
+>  mongoimport --host localhost --db sap_db --collection emps --file ./emps.json 
