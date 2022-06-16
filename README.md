@@ -287,3 +287,41 @@ export PATH=$PATH:$HOME/.local/bin:$PATH:YourMongoPath
         }
     ); 
 
+```
+
+{
+    empid:101, 
+    empname:"naveen", 
+    email:"naveen@probits.in", 
+    address: {
+        hno:123, 
+        street:"Stevens Creek Blvd", 
+        ... 
+    }, 
+    family: {
+
+    }, 
+    project:{
+        timesheet: []
+    }
+}
+```
+
+- to iterate records and copy to other collection 
+- new collection new_emps should have only name and salary 
+```
+
+var cursor1=db.emps.find({}, {_id:0, empName:1, empsal:1});
+while(cursor1.hasNext()) {
+    let record = cursor1.next();
+    db.new_emps.insert({empname:record.empName.toUpperCase(), salary:record.empsal}); 
+}
+```
+
+
+- db.createCollection("collName", options)
+
+
+- db.createCollection("capCol", {capped:true, autoIndexId:true, size:1000, max:5})
+
+- db.emps.update({empName:"hitesh"}, {$set:{empName:"Hitesh Patil", email:"hitesh@ps.com"}})
