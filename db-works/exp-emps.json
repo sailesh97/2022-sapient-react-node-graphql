@@ -1,0 +1,54 @@
+{
+    "_id": {
+        "$oid": "62aaf2d630f2cdf366f9d3c4"
+    },
+    "empName": "hitesh",
+    "empsal": 1234.0
+}
+{
+    "_id": {
+        "$oid": "62aaf30b30f2cdf366f9d3c5"
+    },
+    "empName": "Rohit",
+    "empsal": 2233.0
+}
+{
+    "_id": {
+        "$oid": "62aaf3f130f2cdf366f9d3c6"
+    },
+    "empName": "Madhulata",
+    "empsal": 2233.0,
+    "email": "madhulatha@gmail.com"
+}
+{
+    "_id": {
+        "$oid": "62aafa78622a6b56c7d60198"
+    },
+    "empName": "Ravivarma",
+    "empsal": 4422,
+    "address": "Washington"
+}
+{
+    "_id": {
+        "$oid": "62aafa78622a6b56c7d60199"
+    },
+    "empName": "Santosh",
+    "empsal": 4433,
+    "address": "Delhi"
+}
+{
+    "_id": {
+        "$oid": "62aafa78622a6b56c7d6019a"
+    },
+    "empName": "Prit",
+    "empsal": 3344,
+    "address": "Bengaluru"
+}
+{
+    "_id": {
+        "$oid": "62aafa78622a6b56c7d6019b"
+    },
+    "empName": "Rohit",
+    "empsal": 4455,
+    "address": "Virginia"
+}

@@ -270,3 +270,20 @@ export PATH=$PATH:$HOME/.local/bin:$PATH:YourMongoPath
 > db.emps.find({empsal:{$gt:2000}})
 
 >  mongoimport --host localhost --db sap_db --collection emps --file ./emps.json 
+
+>  mongoexport --db sap_db --host localhost --collection emps --out=exp-emps.json
+
+> db.emps.find({email:{$exists:false}})
+
+-- find people who salary is more than 2000 and should not have email 
+
+> db.emps.find(
+        {
+            empsal:{$gt:2000}, 
+            email:{$exists:false}
+        }, 
+        {
+            _id:0, empName:1, empsal:1 
+        }
+    ); 
+
