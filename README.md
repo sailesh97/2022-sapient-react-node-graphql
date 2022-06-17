@@ -700,12 +700,61 @@ user collection
 
 > mongod --dbpath ./rs3 --replSet sap-repl --port 27019
 
+> mongo --port 27017
+
+> rs.status(); 
+
 > config={
         _id:"sap-repl", 
         members:[
             { _id:0, host:"localhost:27017"},
-            { _id:1, host:"localhost:27018"}
+            { _id:1, host:"localhost:27018"}, 
             { _id:2, host:"localhost:27019"}
         ]
     }
+
+> rs.initiate(config); 
+
+> rs.status(); 
+
+-- some body is primary (27017,27018,27019)
+
+> primary: > use repl_db; 
+
+> primary: > db.emps.insert({empid:101, empname:'harry'})
+.. you can put more records 
+
+> mongo --port 27018 
+
+Note : this will not work 
+> show dbs; 
+
+> rs.slaveOk();
+
+-- works 
+> show dbs; 
+
+-- we want to shut down the primary server (27017), you should be in mongo shell of 27017 
+
+> db.shutdownServer(); - will not work 
+
+> use admin; - make sure 
+
+> db.shutdownServer(); -  will work 
+
+-- bring back stopped server 
+> mongod --dbpath ./rs1 --replSet sap-repl --port 27017
+
+now 27017 will be secondary 
+
+> rs.slaveOk();
+
+remember the secondary is only for reading 
+
+for(var i=0; i<100000; i++) {
+    db.dummy.insert({id:i}); 
+    sleep(1);
+}
+
 ```
+
