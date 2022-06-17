@@ -11,3 +11,12 @@
 > https://developer.chrome.com/docs/devtools/javascript/reference/
 
 > https://developer.chrome.com/docs/devtools/javascript/breakpoints/
+
+## mongodb normalize 
+> https://www.mongodb.com/docs/manual/reference/database-references/
+
+
+
+
+
+

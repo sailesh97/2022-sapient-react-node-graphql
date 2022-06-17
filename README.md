@@ -60,7 +60,7 @@ mongodb, nodejs
 
 
 
-# Day 1 Contents 
+# Day 1 
 Disadvantages of using console API
 Overview of the Chrome Developer Tools
 Debugging JS using the Chrome Developer Tools
@@ -626,5 +626,77 @@ size of index
 
 ```
 
+- prototype project 
+- team of 4 pepole -20 - 5 teams doing the project 
 
 
+Team 1 - Ankit, Dhananjay, Prit, Rajitha, Sandeep
+    - OTT 
+Team 2 - Himanshu, Manav, Ramkumar, Sourabh
+    - Ecommerce platform 
+Team 3 - Ayush, Harsh, Hemanth, Irshad, Sailesh 
+    - Travel application 
+Team 4 - Aman, Brahmanand, Kumkumbala, Madhulatha, Varki 
+    - e-courses (online courses)
+Team 5 - Ravivarma, Rohit, Santosh, Vikas verma , hitesh
+    - Library Management System 
+
+
+1. Title of project  
+2. to do write up of the modules 
+    - Banking 
+        - Customer 
+        - Account 
+        - Branch 
+        - Bank 
+        - Transaction 
+
+    - Retail 
+        - customer / user 
+        - Products 
+        - Category 
+        - Shipment 
+        - Cart 
+3. representation of Data Model 
+4. MongoDB commanda for CRUD, and any operations which you are looking for 
+5. Naveen - create an organization - 
+
+
+
+
+```
+user collection 
+{
+    userId:1234, 
+    email:'naveen@naveen.com', 
+    .... 
+    orders : [
+        {
+            order:'o1234', 
+            order-items: [
+                
+            ]
+        }, {}
+    ]
+}
+```
+
+
+
+<br >
+
+
+|replica server | port number| 
+|----|---| 
+| rs1 | 27017 |  
+| rs2 | 27018 |  
+| rs3 | 27019 |  
+
+
+```
+> mongod --dbpath ./rs1 --replSet sap-repl --port 27017
+
+> mongod --dbpath ./rs2 --replSet sap-repl --port 27018
+
+> mongod --dbpath ./rs3 --replSet sap-repl --port 27019
+```
