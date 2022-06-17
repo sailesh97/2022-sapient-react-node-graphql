@@ -489,12 +489,142 @@ ProfessionalDetails
 > db.emps.remove({empName:"Naveen"});
 
 
+> db.some_mock_db.find({"gender" : "Female"}).explain("executionStats"); 
+
+> db.some_mock_db.createIndex({gender:1}); 
+
+- compound indexes 
+
+> db.some_mock_db.createIndex({id:1, email:1}); 
+
+> db.some_mock_db.createIndex({id:1, email:-1}); 
+
+> db.some_mock_db.find({id:1, email:"ksendall0@amazon.co.uk"}).explain("executionStats"); 
+
+- get those queries which are taking more than 2 millis 
+
+> db.system.profile.find({millis:{$gt:1}}, 
+{
+	"keysExamined" : 1,
+	"docsExamined" : 1,
+    "command":1
+}).pretty();
+
+
+- profiling 
+    - 0 - dont profile 
+    - 1 - profile only if is more than msecs 
+    - 2 - profile all the queries 
 
 
 
 
 
 
+
+
+
+```
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "sap_db.some_mock_db",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"gender" : {
+				"$eq" : "Female"
+			}
+		},
+		"winningPlan" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"gender" : {
+					"$eq" : "Female"
+				}
+			},
+			"direction" : "forward"
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 16345,
+		"executionTimeMillis" : 33,
+		"totalKeysExamined" : 0,
+		"totalDocsExamined" : 35000,
+		"executionStages" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"gender" : {
+					"$eq" : "Female"
+				}
+			},
+			"nReturned" : 16345,
+			"executionTimeMillisEstimate" : 0,
+			"works" : 35002,
+			"advanced" : 16345,
+			"needTime" : 18656,
+			"needYield" : 0,
+			"saveState" : 273,
+			"restoreState" : 273,
+			"isEOF" : 1,
+			"direction" : "forward",
+			"docsExamined" : 35000
+		}
+	},
+	"serverInfo" : {
+		"host" : "Naveens-MacBook-Pro.local",
+		"port" : 27017,
+		"version" : "4.2.1",
+		"gitVersion" : "edf6d45851c0b9ee15548f0f847df141764a317e"
+	},
+	"ok" : 1
+}
+
+
+size of index 
+
+	"nindexes" : 2,
+	"indexBuilds" : [ ],
+	"totalIndexSize" : 507904,
+	"indexSizes" : {
+		"_id_" : 327680,
+		"gender_1" : 180224
+	},
+	"scaleFactor" : 1,
+	"ok" : 1
+
+- data size 
+	"ns" : "sap_db.some_mock_db",
+	"size" : 4495225,
+	"count" : 35000,
+	"avgObjSize" : 128,
+	"storageSize" : 2015232,
+ 
+```
+
+
+
+- unique key 
+
+>  db.emps1.save({empName:"Rohit", empId:101}); 
+
+>  db.emps1.createIndex({empId:1}, {unique:true}); 
+
+
+- to drop index 
+
+>  db.emps1.dropIndex({empId : 1});
+
+
+```
+    db.getCollectionNames().forEach(function(collection) {  
+        indexes = db[collection].getIndexes();  
+        print("Indexes for " + collection + ":");  
+        printjson(indexes);
+    });
+
+```
 
 
 
