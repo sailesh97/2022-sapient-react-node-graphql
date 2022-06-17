@@ -429,4 +429,72 @@ ProfessionalDetails
 
 > db.embed.find({customerId:102})
 
-> db.embed.find({'address.city':'Ashburn'})
+> db.embed.find({'address.city':'Ashburn'});
+
+- arrays 
+
+```
+    db.foods.insert({name:"Dosa", price:100, restaurant:"Sagar", reviews:[7,8,10,7]});
+    db.foods.insert({name:"Idly", price:70, restaurant:"Sagar", reviews:[5,4,6]});
+    db.foods.insert({name:"Poori", price:123, restaurant:"Sagar", reviews:[9,9,10]});
+    db.foods.insert({name:"Poha", price:80, restaurant:"Sagar", reviews:[4,8]});
+```
+- exact match 
+> db.foods.find({reviews:[5,4,6]});
+
+> db.foods.find({reviews:[4,5,6]});
+
+- find it anywhere 
+> db.foods.find({reviews:8})
+
+- find by index 
+> db.foods.find({'reviews.0':7})
+
+- review with condition 
+> db.foods.find({reviews:{$elemMatch:{$gt:8, $lt:10}}});
+
+> db.foods.find({})
+
+> db.foods.aggregate({$unwind:"$reviews"}, {$match:{name:"Dosa"}}, { $count: "reviews"}); 
+ 
+> db.emps.find().sort({empName:-1, address:1}).skip(2).limit(3);
+
+
+- update (modify the records)
+
+- db.emps.update({}, {country:'India'}); -> update emps set country;'india'; 
+
+- db.emps.update({empName:'Rohit'}, {$set:{country:'India'}});  
+
+
+- db.emps.update({empName:'Rohit'}, {$set:{country:'India'}}, {multi:true}); 
+
+- db.emps.update({}, {$set:{country:'India'}}, {multi:true}); 
+
+- if the record is found it updates else inserts 
+- db.emps.update({empName:"Shiva"}, {$set:{country:'India', email:'shiva@ps.com'}}, {upsert:true}); 
+
+- to use save instead of insert 
+
+> db.emps.save({"_id" : ObjectId("62ac192507a8d61ad3945914"), empName:'Naveen', empsal:2256});
+
+> db.emps.save({"_id" : 100, empName:'Naveen', empsal:2256});
+
+- remove- remove(); 
+
+- remove all the records 
+> db.empd.remove({}); 
+
+- removes with condition 
+> db.emps.remove({empName:"Naveen"});
+
+
+
+
+
+
+
+
+
+
+
