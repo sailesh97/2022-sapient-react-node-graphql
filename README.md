@@ -325,3 +325,108 @@ while(cursor1.hasNext()) {
 - db.createCollection("capCol", {capped:true, autoIndexId:true, size:1000, max:5})
 
 - db.emps.update({empName:"hitesh"}, {$set:{empName:"Hitesh Patil", email:"hitesh@ps.com"}})
+
+
+
+# day 3 
+
+- to drop collection 
+> db.capCol.drop();
+
+- insert, find 
+- db.emps.find({}, {}); 
+
+- select * from emps where address = 'Delhi' or address = 'Bengaluru' ;
+- select * from emps where address  in ('Delhi', 'bengaluru')
+- select * from emps where address  in ('Delhi', 'bengaluru') or empsal > 2000; 
+- select * from emps where address  in ('Delhi', 'bengaluru') and empsal > 2000; 
+
+
+> db.emps.find({address:{$in:['Delhi', 'Bengaluru']}}); 
+
+- and 
+> db.emps.find({
+        address:{$in:['Delhi', 'Bengaluru']}, 
+        empsal:{$gt:3500}
+        }); 
+
+
+> db.emps.find({
+        $and:[
+                {address:{$in:['Delhi', 'Bengaluru']}}, 
+                {empsal:{$gt:3500}}
+        ]
+        });         
+
+- or 
+> db.emps.find({
+        $or:[
+           
+                {address:{$in:['Delhi', 'Bengaluru']}}, 
+               { empsal:{$gt:3500}}
+           
+        ]}); 
+
+- and  + or 
+> db.emps.find({
+    email : "hitesh@ps.com", 
+        $or:[
+           
+                {address:{$in:['Delhi', 'Bengaluru']}}, 
+               { empsal:{$gt:3500}}
+           
+        ]
+    }); 
+
+> db.emps.update({email : "hitesh@ps.com"}, {$set:{empsal:4000}});
+
+
+
+
+
+Emplyee
+Address
+Insurance
+Project
+Family
+PersonDetails
+ProfessionalDetails
+....
+
+- embedded document 
+```
+    > db.embed.insert({
+        customerId:101, 
+        customerName:'Santosh', 
+        address: {
+            houseNo:1234, 
+            street:'American Dream Way', 
+            city:'Reston', 
+            state:'VA'
+        }, 
+        contact:{
+            email:'santosh@ps.com', 
+            mobile:'+1456 789 7765'
+        }
+    })
+
+
+      > db.embed.insert({
+        customerId:102, 
+        customerName:'Saurabh', 
+        address: {
+            houseNo:3213, 
+            street:'Stevens Creek Blvd', 
+            city:'Ashburn', 
+            state:'VA'
+        }, 
+        contact:{
+            email:'saurabh@ps.com', 
+            mobile:'+1456 799 7765'
+        }
+    })
+```
+
+> db.embed.find({customerId:102})
+
+> db.embed.find({'address.city':'Ashburn'})
