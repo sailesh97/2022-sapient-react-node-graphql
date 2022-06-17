@@ -699,4 +699,13 @@ user collection
 > mongod --dbpath ./rs2 --replSet sap-repl --port 27018
 
 > mongod --dbpath ./rs3 --replSet sap-repl --port 27019
+
+> config={
+        _id:"sap-repl", 
+        members:[
+            { _id:0, host:"localhost:27017"},
+            { _id:1, host:"localhost:27018"}
+            { _id:2, host:"localhost:27019"}
+        ]
+    }
 ```
