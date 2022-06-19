@@ -99,8 +99,10 @@ Kafka & how esb is used
 
 Cloud 
     - aws azure 
+    Just like buying a computer
 Containarization
     - docker 
+    Needed to deploy an application
 
 
 
